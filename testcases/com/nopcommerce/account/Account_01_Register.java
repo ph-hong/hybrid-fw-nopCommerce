@@ -2,37 +2,37 @@ package com.nopcommerce.account;
 
 import org.testng.annotations.Test;
 
+import common.BaseTest;
+import common.PageGeneratorManager;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.RegisterPageObject;
 
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Account_01_Register {
+public class Account_01_Register extends BaseTest{
 	WebDriver driver;
 	RegisterPageObject registerPage;
 	HomePageObject homePage;
-	String projectPath = System.getProperty("user.dir");
+
 	String email = "hpTest"+ randomNumber() + "@live.com";
 
+	@Parameters({"browser"})
 	@BeforeClass
-	public void beforeClass() {
-		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
-		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.get("https://demo.nopcommerce.com/");
-		homePage = new HomePageObject(driver);
+	public void beforeClass(String browserName) {
+		driver = getBrowserDriver(browserName);
+		homePage = PageGeneratorManager.getHomePage(driver);
 	}
+	
 	@Test
 	public void Register_TC01_Empty_Data() {
-
 		registerPage = homePage.clickRegisterLink();
 		registerPage.inputFirstName("");
 		registerPage.inputLastName("");
@@ -46,8 +46,8 @@ public class Account_01_Register {
 		Assert.assertEquals(registerPage.getEmailRequiredErrorMsg(), "Email is required.");
 		Assert.assertEquals(registerPage.getPasswordErrorMsg(), "Password is required.");
 		Assert.assertEquals(registerPage.getConfirmPasswordErrorMsg(), "Password is required.");
-
 	}
+	
 	@Test
 	public void Register_TC02_Email_Incorrect() {
 		registerPage = homePage.clickRegisterLink();
@@ -135,5 +135,4 @@ public class Account_01_Register {
 		Random rand = new Random();
 		return rand.nextInt(999999);
 	}
-
 }
