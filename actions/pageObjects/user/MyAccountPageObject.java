@@ -12,6 +12,9 @@ public class MyAccountPageObject extends BasePage {
 		this.driver = driver;
 	}
 
+	public void clickCustomerInfo() {
+		waitForElementClickable(driver, MyAccountPageUI.CUSTOMER_INFO_LINK);
+	}
 	public void selectFemaleGender() {
 		waitForElementClickable(driver, MyAccountPageUI.FEMALE_RADIO_BTN);
 		clickToElement(driver, MyAccountPageUI.FEMALE_RADIO_BTN);

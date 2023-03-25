@@ -1,6 +1,7 @@
 package pageUIs.user;
 
 public class MyAccountPageUI {
+	public static final String CUSTOMER_INFO_LINK = "CSS=li[class^='customer-info']";
 	public static final String MALE_RADIO_BTN = "ID=gender-male";
 	public static final String FEMALE_RADIO_BTN = "ID=gender-female";
 	public static final String FIRST_NAME_TXTBOX = "ID=FirstName";

@@ -37,11 +37,13 @@ public class My_Account extends BaseTest {
 
 		Assert.assertTrue(loginPage.isLogoutLinkDisplayed());
 		
+		myAccountPage = homePage.clickMyAccountLink();
+		
 	}
 
 	@Test
 	public void My_Account_TC01_Update_Customer_Info() {
-		myAccountPage = homePage.clickMyAccountLink();
+		myAccountPage.clickCustomerInfo();
 		myAccountPage.selectFemaleGender();
 		myAccountPage.inputFirstName("UpFirst");
 		myAccountPage.inputLastName("UpLast");
