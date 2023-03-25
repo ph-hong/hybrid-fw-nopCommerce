@@ -17,20 +17,22 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Account_01_Register extends BaseTest{
+public class Account_01_Register extends BaseTest {
 	WebDriver driver;
 	RegisterPageObject registerPage;
 	HomePageObject homePage;
 
-	String email = "hpTest"+ randomNumber() + "@live.com";
+	String email;
 
-	@Parameters({"browser"})
+	@Parameters({ "browser" })
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		homePage = PageGeneratorManager.getHomePage(driver);
+
+		email = "hpTest" + randomNumber() + "@live.com";
 	}
-	
+
 	@Test
 	public void Register_TC01_Empty_Data() {
 		registerPage = homePage.clickRegisterLink();
@@ -43,22 +45,22 @@ public class Account_01_Register extends BaseTest{
 
 		Assert.assertEquals(registerPage.getFirstNameRequiredErrorMsg(), "First name is required.");
 		Assert.assertEquals(registerPage.getLastNameRequiredErrorMsg(), "Last name is required.");
-		Assert.assertEquals(registerPage.getEmailRequiredErrorMsg(), "Email is required.");
+		Assert.assertEquals(registerPage.getEmailErrorMsg(), "Email is required.");
 		Assert.assertEquals(registerPage.getPasswordErrorMsg(), "Password is required.");
 		Assert.assertEquals(registerPage.getConfirmPasswordErrorMsg(), "Password is required.");
 	}
-	
+
 	@Test
 	public void Register_TC02_Email_Incorrect() {
 		registerPage = homePage.clickRegisterLink();
 		registerPage.inputFirstName("test First Name");
 		registerPage.inputLastName("test Last Name");
-		registerPage.inputEmail("testEmail@123.66");
+		registerPage.inputEmail("testEmail@123@66");
 		registerPage.inputPassword("pass12345");
 		registerPage.inputConfirmPassword("pass12345");
 		registerPage.clickRegisterButton();
 
-		Assert.assertEquals(registerPage.getVaidationErrorMsg(), "Wrong email");
+		Assert.assertEquals(registerPage.getEmailErrorMsg(), "Wrong email");
 	}
 
 	@Test
@@ -72,10 +74,10 @@ public class Account_01_Register extends BaseTest{
 		registerPage.clickRegisterButton();
 
 		Assert.assertEquals(registerPage.getPasswordErrorMsg(),
-				"Password must meet the following rules:\nmust have at least 6 characters");
+				"Password must meet the following rules:\n" + "must have at least 6 characters");
 	}
 
-	@Test	
+	@Test
 	public void Register_TC04_Password_And_Confirm_Password_Not_Match() {
 		registerPage = homePage.clickRegisterLink();
 		registerPage.inputFirstName("HP First Name");
@@ -89,7 +91,7 @@ public class Account_01_Register extends BaseTest{
 				"The password and confirmation password do not match.");
 	}
 
-	@Test	
+	@Test
 	public void Register_TC05_Valid_Data() {
 		registerPage = homePage.clickRegisterLink();
 		registerPage.inputFirstName("HP First Name");
@@ -99,8 +101,7 @@ public class Account_01_Register extends BaseTest{
 		registerPage.inputConfirmPassword("123456");
 		registerPage.clickRegisterButton();
 
-		Assert.assertEquals(registerPage.getSuccessRegisterMsg(),
-				"Your registration completed");
+		Assert.assertEquals(registerPage.getSuccessRegisterMsg(), "Your registration completed");
 	}
 
 	@Test
@@ -112,7 +113,7 @@ public class Account_01_Register extends BaseTest{
 		registerPage.inputPassword("123456");
 		registerPage.inputConfirmPassword("123456");
 		registerPage.clickRegisterButton();
-		
+
 		String emailValid = email;
 		registerPage = homePage.clickRegisterLink();
 		registerPage.inputFirstName("HP First Name 06");
@@ -122,15 +123,14 @@ public class Account_01_Register extends BaseTest{
 		registerPage.inputConfirmPassword("123456");
 		registerPage.clickRegisterButton();
 
-		Assert.assertEquals(registerPage.getVaidationErrorMsg(),
-				"The specified email already exists");
+		Assert.assertEquals(registerPage.getVaidationErrorMsg(), "The specified email already exists");
 	}
 
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
 	}
-	
+
 	private int randomNumber() {
 		Random rand = new Random();
 		return rand.nextInt(999999);

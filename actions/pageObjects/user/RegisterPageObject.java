@@ -47,9 +47,9 @@ public class RegisterPageObject extends BasePage {
 		return getElementText(driver, RegisterPageUI.LAST_NAME_REQUIRED_ERROR_MSG);
 	}
 
-	public String getEmailRequiredErrorMsg() {
-		waitForElementVisible(driver, RegisterPageUI.EMAIL_REQUIRED_ERROR_MSG);
-		return getElementText(driver, RegisterPageUI.EMAIL_REQUIRED_ERROR_MSG);
+	public String getEmailErrorMsg() {
+		waitForElementVisible(driver, RegisterPageUI.EMAIL_ERROR_MSG);
+		return getElementText(driver, RegisterPageUI.EMAIL_ERROR_MSG);
 	}
 
 	public String getPasswordErrorMsg() {
