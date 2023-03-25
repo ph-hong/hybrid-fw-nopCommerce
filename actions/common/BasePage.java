@@ -53,6 +53,10 @@ public class BasePage {
 	public String getElementText(WebDriver driver, String locator) {
 		return getWebElement(driver, locator).getText();
 	}
+	
+	public boolean isElementDisplayedInDOM(WebDriver driver, String locator) {
+		return getWebElement(driver, locator).isDisplayed();
+	}
 
 
 	/* Wait */
