@@ -12,9 +12,14 @@ public class MyAccountPageObject extends BasePage {
 		this.driver = driver;
 	}
 
+	/*
+	 * Customer Info
+	 */
 	public void clickCustomerInfo() {
 		waitForElementClickable(driver, MyAccountPageUI.CUSTOMER_INFO_LINK);
+		clickToElement(driver, MyAccountPageUI.CUSTOMER_INFO_LINK);
 	}
+
 	public void selectFemaleGender() {
 		waitForElementClickable(driver, MyAccountPageUI.FEMALE_RADIO_BTN);
 		clickToElement(driver, MyAccountPageUI.FEMALE_RADIO_BTN);
@@ -45,9 +50,96 @@ public class MyAccountPageObject extends BasePage {
 	}
 
 	public String getUpdateSuccessMsg() {
-		waitForElementVisible(driver, MyAccountPageUI.UPDATE_SUCCESS_MSG);
-		return getElementText(driver, MyAccountPageUI.UPDATE_SUCCESS_MSG);
-		
+		waitForElementVisible(driver, MyAccountPageUI.BAR_NOTIFICATION_SUCCESS);
+		return getElementText(driver, MyAccountPageUI.BAR_NOTIFICATION_SUCCESS);
+
+	}
+
+	/*
+	 * Add Addresses
+	 */
+
+	public void clickAddressesLink() {
+		waitForElementClickable(driver, MyAccountPageUI.ADDDRESSES_LINK);
+		clickToElement(driver, MyAccountPageUI.ADDDRESSES_LINK);
+
+	}
+
+	public void clickAddNewBtn() {
+		waitForElementClickable(driver, MyAccountPageUI.ADD_NEW_BTN);
+		clickToElement(driver, MyAccountPageUI.ADD_NEW_BTN);
+
+	}
+
+	public void inputAddressFirstName(String addressFirstName) {
+		waitForElementVisible(driver, MyAccountPageUI.ADDRESS_FIRST_NAME_TXTBOX);
+		sendKeyToElement(driver, MyAccountPageUI.ADDRESS_FIRST_NAME_TXTBOX, addressFirstName);
+
+	}
+
+	public void inputAddressLastName(String addressLastName) {
+		waitForElementVisible(driver, MyAccountPageUI.ADDRESS_LAST_NAME_TXTBOX);
+		sendKeyToElement(driver, MyAccountPageUI.ADDRESS_LAST_NAME_TXTBOX, addressLastName);
+
+	}
+
+	public void inputAddressEmail(String addressEmail) {
+		waitForElementVisible(driver, MyAccountPageUI.ADDRESS_EMAIL_TXTBOX);
+		sendKeyToElement(driver, MyAccountPageUI.ADDRESS_EMAIL_TXTBOX, addressEmail);
+	}
+
+	public void inputAddressCompany(String addressCompany) {
+		waitForElementVisible(driver, MyAccountPageUI.ADDRESS_COMPANY_TXTBOX);
+		sendKeyToElement(driver, MyAccountPageUI.ADDRESS_COMPANY_TXTBOX, addressCompany);
+
+	}
+
+	public void inputCity(String city) {
+		waitForElementVisible(driver, MyAccountPageUI.CITY_TXTBOX);
+		sendKeyToElement(driver, MyAccountPageUI.CITY_TXTBOX, city);
+
+	}
+
+	public void inputAddress1(String address1) {
+		waitForElementVisible(driver, MyAccountPageUI.ADDRESS_1_TXTBOX);
+		sendKeyToElement(driver, MyAccountPageUI.ADDRESS_1_TXTBOX, address1);
+
+	}
+
+	public void inputAddress2(String address2) {
+		waitForElementVisible(driver, MyAccountPageUI.ADDRESS_2_TXTBOX);
+		sendKeyToElement(driver, MyAccountPageUI.ADDRESS_2_TXTBOX, address2);
+
+	}
+
+	public void inputZipPostalCode(String zipPostalCode) {
+		waitForElementVisible(driver, MyAccountPageUI.ZIP_POSTAL_CODE);
+		sendKeyToElement(driver, MyAccountPageUI.ZIP_POSTAL_CODE, zipPostalCode);
+
+	}
+
+	public void inputPhoneNumer(String phoneNumber) {
+		waitForElementVisible(driver, MyAccountPageUI.PHONE_NUMBER_TXTBOX);
+		sendKeyToElement(driver, MyAccountPageUI.PHONE_NUMBER_TXTBOX, phoneNumber);
+
+	}
+
+	public void inputFaxNumber(String faxNumber) {
+		waitForElementVisible(driver, MyAccountPageUI.FAX_NUMBER_TXTBOX);
+		sendKeyToElement(driver, MyAccountPageUI.FAX_NUMBER_TXTBOX, faxNumber);
+
+	}
+
+	public void clickSaveAddressBtn(String string) {
+		waitForElementClickable(driver, MyAccountPageUI.SAVE_ADDRESS_BTN);
+		clickToElement(driver, MyAccountPageUI.SAVE_ADDRESS_BTN);
+
+	}
+	
+	public String getAddedAddressSuccessMsg() {
+		waitForElementVisible(driver, MyAccountPageUI.BAR_NOTIFICATION_SUCCESS);
+		return getElementText(driver, MyAccountPageUI.BAR_NOTIFICATION_SUCCESS);
+
 	}
 
 }
