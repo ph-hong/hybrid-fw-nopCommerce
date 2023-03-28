@@ -24,7 +24,7 @@ public class MyAccountPageUI {
 	 */
 
 	public static final String ADDDRESSES_LINK = "XPATH=//a[text()='Addresses']";
-	public static final String ADD_NEW_BTN = "CSS=button[class$='add-address-button']";
+	public static final String ADD_NEW_BTN = "XPATH=//button[text()='Add new']";
 	public static final String ADDRESS_FIRST_NAME_TXTBOX = "ID=Address_FirstName";
 	public static final String ADDRESS_LAST_NAME_TXTBOX = "ID=Address_LastName";
 	public static final String ADDRESS_EMAIL_TXTBOX = "ID=Address_Email";
@@ -35,6 +35,19 @@ public class MyAccountPageUI {
 	public static final String ZIP_POSTAL_CODE = "ID=Address_ZipPostalCode";
 	public static final String PHONE_NUMBER_TXTBOX = "ID=Address_PhoneNumber";
 	public static final String FAX_NUMBER_TXTBOX = "ID=Address_FaxNumber";
-	public static final String SAVE_ADDRESS_BTN = "CSS=button[class$='save-address-button']";
+	public static final String SAVE_ADDRESS_BTN = "XPATH=//button[text()='Save']";
+	
+	/*
+	 * Change Password
+	 */
+	
+	public static final String CHANGE_PASSWORD_LINK ="XPATH=//a[text()='Change password']";
+	public static final String OLD_PASSWPRD_TXTBOX = "ID=OldPassword";
+	public static final String NEW_PASSWPRD_TXTBOX = "ID=NewPassword";
+	public static final String CONFIRM_PASSWPRD_TXTBOX = "ID=ConfirmNewPassword";
+	public static final String CHANGE_PASSWORD_BTN = "XPATH=//button[text()='Change password']";
 
+	public static final String LOG_OUT_LINK = "XPATH=//a[text()='Log out']";
+	public static final String CLOSE_BTN = "XPATH=//span[@title='Close']";
+	
 }
